@@ -1,1 +1,90 @@
-<h1>Vista principal materia</h1>
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.rtl.min.css" integrity="sha384-nU14brUcp6StFntEOOEBvcJm4huWjB0OcIeQ3fltAfSmuZFrkAif0T+UtNGlKKQv" crossorigin="anonymous">
+    <!-- iconos -->
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+
+    <nav class="navbar bg-dark navbar-dark navbar-expand-lg">
+      <div class="container-fluid">
+        <a class="btn btn-dark" data-bs-toggle="offcanvas" href="#offcanvasExample" role="button" aria-controls="offcanvasExample">
+          <button type="button" class="btn btn-dark"><i class='bx bxs-user bx-md'></i></button>
+        </a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav">
+            <li class="nav-item">
+              <a class="nav-link active" aria-current="page" href="#">Inicio</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/materia">Materias</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/alumno">Alumnos</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    <!-- <div class="offcanvas offcanvas-end show text-bg-dark" tabindex="-1" id="offcanvasExample" aria-labelledby="offcanvasExampleLabel">
+      <div class="offcanvas-header">
+        <h5 class="offcanvas-title" id="offcanvasExampleLabel">Menu</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+      </div>
+      <a><i class="bi bi-list"></i></a>
+      <div class="offcanvas-body">
+        <div>
+          Some text as placeholder. In real life you can have the elements you have chosen. Like, text, images, lists, etc.
+        </div>
+        <div class="dropdown mt-3">
+          <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown">
+            Dropdown button
+          </button>
+          <ul class="dropdown-menu">
+            <li><a class="dropdown-item" href="#">Action</a></li>
+            <li><a class="dropdown-item" href="#">Another action</a></li>
+            <li><a class="dropdown-item" href="#">Something else here</a></li>
+          </ul>
+        </div>
+      </div>
+    </div> -->
+    
+  </head>
+  <body>
+    <div class="container">
+        <a href="/create_materia" class="btn btn-outline-dark mt-4"><i class='bx bx-message-square-add'></i></a>
+        
+        <% materias.forEach((materia) => { %>
+            <div class="card mb-3" style="margin-top: 15px;">
+                <div class="row g-0">
+                    <div class="col-md-8">
+                        <div class="card-body">
+                            <p style="display: none;"><%= materia.id %></p>
+                            <h5 class="card-title"><%= materia.name %></h5>
+                            <p class="card-text"><%= materia.description %></p>
+                        </div>
+                    </div>
+                    <div class="col-md-4" style="align-items: center;">
+                        <!-- boton para editar registro de materia -->
+                        <a href="edit_materia/<%= materia.id %>" class="btn btn-dark"><i class='bx bx-edit'></i></a>
+                        <!-- boton para eliminar registro de materia -->
+                        <a href="delete_materia/<%= materia.id %>" class="btn btn-dark"><i class='bx bx-trash'></i></a>
+                        <!-- <button type="button" class="btn btn-dark"><i class='bx bx-edit'></i></button> -->
+                        <!-- <button type="button" class="btn btn-dark"><i class='bx bx-trash'></i></button> -->
+                    </div>
+                </div>
+            </div>
+        <% }) %>
+    </div>
+       
+    
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+  </body>
+</html>

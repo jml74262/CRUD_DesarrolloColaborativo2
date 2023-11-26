@@ -1,1 +1,59 @@
-<h1>create materia works</h1>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Crear Materia</title>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.rtl.min.css" integrity="sha384-nU14brUcp6StFntEOOEBvcJm4huWjB0OcIeQ3fltAfSmuZFrkAif0T+UtNGlKKQv" crossorigin="anonymous">
+    <!-- iconos -->
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+
+    <nav class="navbar bg-dark navbar-dark navbar-expand-lg">
+        <div class="container-fluid">
+          <a class="btn btn-dark" data-bs-toggle="offcanvas" href="#offcanvasExample" role="button" aria-controls="offcanvasExample">
+            <button type="button" class="btn btn-dark"><i class='bx bx-menu bx-md'></i></button>
+          </a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav">
+              <li class="nav-item">
+                <a class="nav-link active" aria-current="page" href="#">Inicio</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="/materia">Materias</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="/alumno">Alumnos</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </nav>
+</head>
+<body>
+
+<div class="container mt-5">
+    <h2>Crear Materia</h2>
+    <form action="/save_materia" method="POST">
+        <div class="mb-3">
+            <label for="name" class="form-label">Nombre de la Materia</label>
+            <input type="text" class="form-control" id="name" name="name" required>
+        </div>
+        <div class="mb-3">
+            <label for="description" class="form-label">Descripción</label>
+            <textarea class="form-control" id="description" name="description" rows="3" required></textarea>
+        </div>
+        <button type="submit" class="btn btn-dark btn-primary">Crear Materia</button>
+        <!-- boton para regresar a la vista de materia -->
+        <a href="/materia" class="btn btn-dark btn-primary">Regresar</a>
+    </form>
+</div>
+
+<!-- Bootstrap JS (optional, if you need it) -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+
+</body>
+</html>
