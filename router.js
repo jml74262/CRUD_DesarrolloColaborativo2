@@ -129,7 +129,7 @@ router.get("/delete_alumno_materia/:id", (req, res) => {
         console.error(error);
         return;
       } else {
-        res.redirect("/alumno_materia");
+        res.redirect("/materia");
       }
     });
   });
