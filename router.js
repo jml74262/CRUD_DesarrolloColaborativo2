@@ -7,6 +7,16 @@ router.get("/", (req, res) => {
   res.render("index");
 });
 
+router.get("/login", (req, res) => {
+    res.render("login/login");
+    }
+);
+
+router.get("/login_check", (req, res) => {
+    //si encuentra una coincidecia en la base de datos, redirecciona a la ruta /home
+    res.render("index");
+});
+
 router.get("/materia", (req, res) => {
   conexion.query("SELECT * FROM asignature", (error, results) => {
     if (error) {
@@ -140,5 +150,6 @@ router.post("/save_materia", crud.save_materia);
 router.post("/update_materia", crud.update_materia);
 router.post("/save_user", crud.save_user);
 router.post("/update_user", crud.update_user);
+router.post("/login", crud.login);
 
 module.exports = router;
