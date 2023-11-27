@@ -33,52 +33,29 @@
       </div>
     </nav>
 
-    <!-- <div class="offcanvas offcanvas-end show text-bg-dark" tabindex="-1" id="offcanvasExample" aria-labelledby="offcanvasExampleLabel">
-      <div class="offcanvas-header">
-        <h5 class="offcanvas-title" id="offcanvasExampleLabel">Menu</h5>
-        <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
-      </div>
-      <a><i class="bi bi-list"></i></a>
-      <div class="offcanvas-body">
-        <div>
-          Some text as placeholder. In real life you can have the elements you have chosen. Like, text, images, lists, etc.
-        </div>
-        <div class="dropdown mt-3">
-          <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown">
-            Dropdown button
-          </button>
-          <ul class="dropdown-menu">
-            <li><a class="dropdown-item" href="#">Action</a></li>
-            <li><a class="dropdown-item" href="#">Another action</a></li>
-            <li><a class="dropdown-item" href="#">Something else here</a></li>
-          </ul>
-        </div>
-      </div>
-    </div> -->
     
   </head>
   <body>
     <div class="container">
-        <a href="/create_materia" class="btn btn-outline-dark mt-4"><i class='bx bx-message-square-add'></i></a>
+        <a href="/alumno_materia" class="btn btn-outline-dark mt-4"><i class='bx bx-message-square-add'></i></a>
         
-        <% materias.forEach((materia) => { %>
+        <% alumno_materias.forEach((alumno_materia) => { %>
             <div class="card mb-3" style="margin-top: 15px;">
                 <div class="row g-0">
                     <div class="col-md-8">
                         <div class="card-body">
-                            <p style="display: none;"><%= materia.id %></p>
-                            <h5 class="card-title"><%= materia.name %></h5>
-                            <p class="card-text"><%= materia.description %></p>
+                            <p style="display: none;"><%= alumno_materia.id %></p>
+                            <h5 class="card-title"><%= alumno_materia.name %></h5>
+                            <p class="card-text"><%= alumno_materia.id %></p>
                         </div>
                     </div>
                     <div class="col-md-4" style="align-items: center;">
                         <!-- boton para editar registro de materia -->
-                        <a href="edit_materia/<%= materia.id %>" class="btn btn-dark"><i class='bx bx-edit'></i></a>
                         <!-- boton para eliminar registro de materia -->
-                        <a href="delete_materia/<%= materia.id %>" class="btn btn-dark"><i class='bx bx-trash'></i></a>
                         <!-- boton para vincular a un alumno a una materia -->
+                        <a href="delete_alumno_materia/<%= alumno_materia.id %>" class="btn btn-dark"><i class='bx bx-trash'></i></a>
 
-                        <a href="alumno_materia/<%= materia.id %>" class="btn btn-dark"><i class='bx bx-user-plus'></i></a>
+
                         <!-- <button type="button" class="btn btn-dark"><i class='bx bx-edit'></i></button> -->
                         <!-- <button type="button" class="btn btn-dark"><i class='bx bx-trash'></i></button> -->
                     </div>
