@@ -47,9 +47,9 @@
                             <p class="card-text"><%= user.role %></p>
                         </div>
                     </div>
-                    <div class="col-md-4" style="align-items: center;">
+                    <div class="col-md-4 d-flex justify-content-center align-items-center">
                         <!-- boton para editar registro de usuario -->
-                        <a href="edit_alumno/<%= user.id %>" class="btn btn-dark"><i class='bx bx-edit'></i></a>
+                        <a href="edit_alumno/<%= user.id %>" class="btn btn-dark" style="margin-right: 10px;"><i class='bx bx-edit'></i></a>
                         <!-- boton para eliminar registro de usuario -->
                         <a href="delete_alumno/<%= user.id %>" class="btn btn-dark"><i class='bx bx-trash'></i></a>
                     </div>
