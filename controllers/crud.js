@@ -29,5 +29,39 @@ exports.update_materia = (req, res) => {
             res.redirect('/materia');
             console.log("Materia actualizada")
         }
+    });    
+}
+
+exports.save_user = (req, res) => {
+    const name = req.body.name;
+    const lastname = req.body.lastname;
+    const role = req.body.role;
+    const age = req.body.age;
+    const sql = "INSERT INTO user SET ?";
+    conexion.query(sql, {name: name,lastname: lastname, role:role, age:age}, (error, results) => {
+        if (error) {
+            console.error(error);
+            return;
+        }else{
+            res.redirect('/alumno');
+            console.log("Usuario guardado")
+        }
+    });
+}
+exports.update_user = (req, res) => {
+    const id = req.body.id;
+    const name = req.body.name;
+    const lastname = req.body.lastname;
+    const role = req.body.role;
+    const age = req.body.age;
+    const sql = "UPDATE user SET ? WHERE id = ?";
+    conexion.query(sql,[{name: name,lastname: lastname, role:role, age:age}, id], (error, results) => {
+        if (error) {
+            console.error(error);
+            return;
+        }else{
+            res.redirect('/alumno');
+            console.log("Usuario actualizado")
+        }
     });
 }

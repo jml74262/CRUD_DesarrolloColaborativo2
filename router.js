@@ -53,20 +53,50 @@ router.get('/delete_materia/:id', (req, res) => {
 });
 
 router.get('/alumno', (req, res) => {
-    res.render('alumno/alumno');
+    conexion.query('SELECT * FROM user', (error, results) => {
+        if (error) {
+            console.error(error);
+            return;
+        }else{
+            res.render('alumno/alumno', {user: results});
+        }
+    });
+    // res.render('materia/materia');
 });
 
 router.get('/create_alumno', (req, res) => {
     res.render('alumno/create_alumno');
 });
 
-router.get('/edit_alumno', (req, res) => {
-    res.render('alumno/edit_alumno');
+router.get('/edit_alumno/:id', (req, res) => {
+    const id = req.params.id;
+    conexion.query('SELECT * FROM user WHERE id = ?', [id], (error, results) => {
+        if (error) {
+            console.error(error);
+            return;
+        }else{
+            res.render('alumno/edit_alumno', {user: results[0]});
+        }
+    });
+});
+//ruta para borrar materia
+router.get('/delete_alumno/:id', (req, res) => {
+    const id = req.params.id;
+    conexion.query('DELETE FROM user WHERE id = ?', [id], (error, results) => {
+        if (error) {
+            console.error(error);
+            return;
+        }else{
+            res.redirect('/alumno');
+        }
+    });
 });
 
 //Control de CRUD
 const crud = require('./controllers/crud');
 router.post('/save_materia', crud.save_materia);
 router.post('/update_materia', crud.update_materia);
+router.post('/save_user', crud.save_user);
+router.post('/update_user', crud.update_user);
 
 module.exports = router;
