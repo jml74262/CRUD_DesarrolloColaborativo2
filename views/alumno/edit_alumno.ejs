@@ -50,7 +50,7 @@
       <div class="mb-3">
         <label for="role" class="form-label">Selecciona un rol:</label>
         <select class="form-select" id="role" name="role" value="<%=user.role %>">
-            <option <%= user.role == 'adminitrador' ? "selected" : "" %> value="adminitrador">Administrador</option>
+            <option <%= user.role == 'administrador' ? "selected" : "" %> value="adminitrador">Administrador</option>
             <option <%= user.role == 'estudiante' ? "selected" : "" %> value="estudiante">Estudiante</option>
             <option <%= user.role == 'maestro' ? "selected" : "" %> value="maestro">Maestro</option>
         </select>
