@@ -1,5 +1,27 @@
 const conexion = require("../database/db");
 
+exports.login = (req, res) => {
+    //si encuentra una coincidecia en la base de datos, redirecciona a la ruta /home
+    const username = req.body.usuario;
+    const contrasena = req.body.contrasena;
+    const sql = "SELECT * FROM user WHERE usuario = ? AND contrasena = ?";
+    conexion.query(sql, [username, contrasena], (error, results) => {
+        if (error) {
+            console.error(error);
+            return;
+        } else {
+            if (results.length > 0) {
+                console.log(results);
+            res.redirect("/login_check");
+            } else {
+            console.log("Usuario o contraseña incorrectos");
+            res.redirect("/login");
+            }
+        }
+        }
+    );
+};
+
 exports.save_materia = (req, res) => {
   const name = req.body.name;
   const description = req.body.description;
