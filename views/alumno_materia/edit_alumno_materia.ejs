@@ -34,34 +34,27 @@
       </nav>
 </head>
 <body>
-<% if (user) { %>
+<% if (alumno_materia) { %>
 <div class="container mt-5">
-    <h2>Modificar Alumno</h2>
-    <form action="/update_user" method="POST">
-        <input type="hidden" name="id" value="<%= user.id %>">
+    <h2>Modificar Calificaciones</h2>
+    <form action="/update_alumno_materia" method="POST">
+        <input type="hidden" name="id" value="<%= alumno_materia.id %>">
+        <input type="hidden" name="id_asignature" value="<%= alumno_materia.id_asignature %>">
         <div class="mb-3">
-            <label for="name" class="form-label"></label>
-            <input type="text" class="form-control" id="name" name="name" value="<%=user.name %>">
+            <label for="name" class="form-label">Calificación 1</label>
+            <input type="text" class="form-control" id="grade1" name="grade1" value="<%=alumno_materia.grade1 %>">
         </div>
         <div class="mb-3">
-          <label for="lastname" class="form-label">Apellido del alumno</label>
-          <input class="form-control" id="lastname" name="lastname" value="<%=user.lastname %>" required></input>
+            <label for="name" class="form-label">Calificación 2</label>
+            <input type="text" class="form-control" id="grade2" name="grade2" value="<%=alumno_materia.grade2 %>">
       </div>
-      <div class="mb-3">
-        <label for="role" class="form-label">Selecciona un rol:</label>
-        <select class="form-select" id="role" name="role" value="<%=user.role %>">
-            <option <%= user.role == 'administrador' ? "selected" : "" %> value="administrador">Administrador</option>
-            <option <%= user.role == 'estudiante' ? "selected" : "" %> value="estudiante">Estudiante</option>
-            <option <%= user.role == 'maestro' ? "selected" : "" %> value="maestro">Maestro</option>
-        </select>
-    </div>
     <div class="mb-3">
-      <label for="age" class="form-label">Edad</label>
-      <input type="number" class="form-control" id="age" name="age" value="<%=user.age %>" required>
+        <label for="name" class="form-label">Calificación 3</label>
+        <input type="text" class="form-control" id="grade3" name="grade3" value="<%=alumno_materia.grade3 %>">
   </div>
         <button type="submit" class="btn btn-dark btn-primary">Guardar cambios</button>
         <!-- boton para regresar a la vista de alumno -->
-        <a href="/alumno" class="btn btn-dark btn-primary">Regresar</a>
+        <a href="/alumno_materia/<%= alumno_materia.id_asignature %>" class="btn btn-dark btn-primary">Regresar</a>
     </form>
 </div>
 <% } %>
