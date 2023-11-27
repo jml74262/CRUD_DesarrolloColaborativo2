@@ -122,6 +122,7 @@ router.get("/alumno_materia/:id", (req, res) => {
         console.error(error);
         return;
       } else {
+        console.log(results);
         res.render("alumno_materia/alumno_materia", {
           alumno_materias: results,
         });
@@ -133,16 +134,57 @@ router.get("/alumno_materia/:id", (req, res) => {
 
 //ruta para borrar alumno_materia
 router.get("/delete_alumno_materia/:id", (req, res) => {
-    const id = req.params.id;
-    conexion.query("DELETE FROM detail_grade WHERE id = ?", [id], (error, results) => {
+  const id = req.params.id;
+  conexion.query(
+    "DELETE FROM detail_grade WHERE id = ?",
+    [id],
+    (error, results) => {
       if (error) {
         console.error(error);
         return;
       } else {
         res.redirect("/materia");
       }
+    }
+  );
+});
+
+router.get("/create_alumno_materia/", (req, res) => {
+  // Consulta 1
+  conexion.query(`SELECT * FROM asignature`, (error, asignatures) => {
+    if (error) {
+      console.error(error);
+      return res.status(500).send("Error en la consulta 1");
+    }
+
+    // Consulta 2
+    conexion.query(`SELECT * FROM user`, (error2, users) => {
+      if (error2) {
+        console.error(error2);
+        return res.status(500).send("Error en la consulta 2");
+      }
+
+      // Aquí tienes acceso a los resultados de ambas consultas
+      res.render("alumno_materia/create_alumno_materia", {
+        asignatures: asignatures,
+        users: users,
+      });
     });
   });
+});
+
+
+router.get("/edit_alumno_materia/:id", (req, res) => {
+  const id = req.params.id;
+  conexion.query("SELECT * FROM detail_grade WHERE id = ?", [id], (error, results) => {
+    if (error) {
+      console.error(error);
+      return;
+    } else {
+      res.render("alumno_materia/edit_alumno_materia", { alumno_materia: results[0] });
+    }
+  });
+});
 
 //Control de CRUD
 const crud = require("./controllers/crud");
@@ -150,6 +192,7 @@ router.post("/save_materia", crud.save_materia);
 router.post("/update_materia", crud.update_materia);
 router.post("/save_user", crud.save_user);
 router.post("/update_user", crud.update_user);
+router.post("/save_alumno_materia", crud.save_alumno_materia);
+router.post("/update_alumno_materia", crud.update_alumno_materia);
 router.post("/login", crud.login);
-
 module.exports = router;

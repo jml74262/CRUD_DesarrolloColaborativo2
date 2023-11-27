@@ -104,55 +104,55 @@ exports.update_user = (req, res) => {
   );
 };
 
-// CRUD materia-usuario
-exports.save_materia_usuario = (req, res) => {
-  const idUsuarioMateria = req.body.idUsuarioMateria;
+// CRUD alumno_materia
+exports.save_alumno_materia = (req, res) => {
   const idUsuario = req.body.idUsuario;
   const idMateria = req.body.idMateria;
-  const grade1 = req.body.grade1;
-  const grade2 = req.body.grade2;
-  const grade3 = req.body.grade3;
-  const age = req.body.age;
-  const sql = "INSERT INTO user SET ?";
+  const sql = "INSERT INTO detail_grade SET ?";
   conexion.query(
     sql,
     {
-      id: idUsuarioMateria,
       id_user: idUsuario,
-      id_materia: idMateria,
-      grade1: grade1,
-      grade2: grade2,
-      grade3: grade3,
+      id_asignature: idMateria,
     },
     (error, results) => {
       if (error) {
         console.error(error);
         return;
       } else {
-        res.redirect("/materia-alumno");
+        res.redirect("/materia");
         console.log("Materia vinculada");
       }
     }
   );
 };
 
-exports.update_materia_usuario = (req, res) => {
+exports.update_alumno_materia = (req, res) => {
   const id = req.body.id;
-  const name = req.body.name;
-  const lastname = req.body.lastname;
-  const role = req.body.role;
-  const age = req.body.age;
-  const sql = "UPDATE user SET ? WHERE id = ?";
+  const idMateria = req.body.id_asignature;
+  const grade1 = req.body.grade1;
+  const grade2 = req.body.grade2;
+  const grade3 = req.body.grade3;
+  console.log("body");
+  console.log(req.body);
+  const sql = "UPDATE detail_grade SET ? WHERE id = ?";
   conexion.query(
     sql,
-    [{ name: name, lastname: lastname, role: role, age: age }, id],
+    [
+      {
+        grade1: grade1,
+        grade2: grade2,
+        grade3: grade3,
+      },
+      id,
+    ],
     (error, results) => {
       if (error) {
         console.error(error);
         return;
       } else {
-        res.redirect("/alumno");
-        console.log("Usuario actualizado");
+        res.redirect("/alumno_materia/" + idMateria);
+        console.log("Calificaciones actualizadas");
       }
     }
   );
